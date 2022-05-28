@@ -1,16 +1,12 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'Generate Angular API packages'
+description: 'This will generate Angular API packages based on OpenApi.yaml and push them to an other repo'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  location-of-openapi-yaml:  # id of input
+    description: 'The location of where the openapi is located'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.location-of-openapi-yaml }}
