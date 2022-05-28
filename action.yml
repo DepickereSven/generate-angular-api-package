@@ -2,11 +2,19 @@
 name: 'Generate Angular API packages'
 description: 'This will generate Angular API packages based on OpenApi.yaml and push them to an other repo'
 inputs:
-  location-of-openapi-yaml:  # id of input
+  location-of-openapi-yaml:
     description: 'The location of where the openapi is located'
+    required: true
+  npm-name:
+    description: 'The name of the npm package'
+    required: true
+  api-module-prefix:
+    description: 'The prefix of the generated ApiModule.'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.location-of-openapi-yaml }}
+    - ${{ inputs.npm-name }}
+    - ${{ inputs.api-module-prefix }}
